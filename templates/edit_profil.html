@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Modifier mon profil{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-person-circle me-2"></i>Modifier mon profil</h1>
+    <div class="card shadow">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                <div class="mb-4 border-bottom pb-3">
+                    <h5 class="mb-3"><i class="bi bi-envelope-at me-2"></i>Informations de base</h5>
+                    {{ form.as_p }}
+                    {{ profile_form.as_p }}
+                </div>
+                <div class="mb-4 border-bottom pb-3">
+                    <h5 class="mb-3"><i class="bi bi-card-list me-2"></i>Champs personnalisés <span class="badge bg-info">Avancé</span></h5>
+                    {{ formset.management_form }}
+                    <table class="table align-middle table-bordered bg-light">
+                        <thead class="table-light"><tr><th><i class="bi bi-tag"></i> Clé</th><th><i class="bi bi-pencil"></i> Valeur</th><th><i class="bi bi-trash"></i> Supprimer</th></tr></thead>
+                        <tbody>
+                            {% for field in formset %}
+                                <tr class="custom-field-row">
+                                    <td>{{ field.key }}</td>
+                                    <td>{{ field.value }}</td>
+                                    <td class="text-center">{{ field.DELETE }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="button" onclick="addFormField();" class="btn btn-outline-primary btn-sm mb-2"><i class="bi bi-plus-circle"></i> Ajouter un champ</button>
+                    <div id="field-feedback" class="text-success small mt-2" style="display:none;"></div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Enregistrer</button>
+                    <a href="{% url 'profil' %}" class="btn btn-secondary ms-2">Annuler</a>
+                </div>
+            </form>
+            <script>
+            function addFormField() {
+                var totalForms = document.getElementById('id_form-TOTAL_FORMS');
+                var formIdx = parseInt(totalForms.value);
+                var table = document.querySelector('table tbody');
+                var newRow = document.createElement('tr');
+                newRow.classList.add('custom-field-row');
+                newRow.innerHTML = `
+                    <td><input type="text" name="form-${formIdx}-key" class="form-control" placeholder="Clé" /></td>
+                    <td><input type="text" name="form-${formIdx}-value" class="form-control" placeholder="Valeur" /></td>
+                    <td class="text-center"><input type="checkbox" name="form-${formIdx}-DELETE" /></td>
+                `;
+                table.appendChild(newRow);
+                totalForms.value = formIdx + 1;
+                var fb = document.getElementById('field-feedback');
+                fb.textContent = 'Champ personnalisé ajouté.';
+                fb.style.display = 'block';
+                setTimeout(()=>{ fb.style.display = 'none'; }, 1800);
+            }
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h3>Signaler un commentaire</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Commentaire de {{ comment.name }}</h5>
+                    <p class="card-text">{{ comment.content }}</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="report_reason" class="form-label">Raison du signalement</label>
+                            <textarea class="form-control" id="report_reason" name="report_reason" rows="3" required placeholder="Expliquez pourquoi vous signalez ce commentaire"></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-danger">Signaler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

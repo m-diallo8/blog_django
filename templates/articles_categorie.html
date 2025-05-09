@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Articles - {{ categorie.name }}{% endblock %}
+{% block meta_description %}Découvrez les articles de la catégorie « {{ categorie.name }} » sur Mon Blog.{% endblock %}
+{% block og_title %}Articles - {{ categorie.name }}{% endblock %}
+{% block og_description %}Découvrez les articles de la catégorie « {{ categorie.name }} » sur Mon Blog.{% endblock %}
+{% block og_image %}/static/img/og-default.png{% endblock %}
+{% block twitter_title %}Articles - {{ categorie.name }}{% endblock %}
+{% block twitter_description %}Découvrez les articles de la catégorie « {{ categorie.name }} » sur Mon Blog.{% endblock %}
+{% block twitter_image %}/static/img/og-default.png{% endblock %}
+{% block content %}
+<h1 class="mb-4 text-center"><i class="bi bi-folder2-open me-2"></i>Articles de <span class="badge bg-primary">{{ categorie.name }}</span></h1>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for article in articles %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-shadow">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" class="card-img-top rounded-circle" alt="{{ article.title }}" style="object-fit:cover;max-height:180px;">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{ article.title }}</h5>
+                <p class="card-text small">{{ article.content|truncatechars:120 }}</p>
+                <a href="{% url 'detail_article' slug=article.slug %}" class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-book"></i> Lire la suite</a>
+            </div>
+            <div class="card-footer bg-white border-0 small text-muted d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-person-circle"></i> {{ article.author.display_name|default:article.author.username }}</span>
+                <span><i class="bi bi-calendar-event"></i> {{ article.created_at|date:"d/m/Y" }}</span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">Aucun article dans cette catégorie.</p>
+    {% endfor %}
+</div>
+<nav aria-label="Pagination">
+    <ul class="pagination justify-content-center">
+        {% if articles.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ articles.previous_page_number }}"><i class="bi bi-arrow-left"></i> Précédent</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link"><i class="bi bi-arrow-left"></i> Précédent</span></li>
+        {% endif %}
+        {% for num in articles.paginator.page_range %}
+            {% if articles.number == num %}
+                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if articles.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ articles.next_page_number }}">Suivant <i class="bi bi-arrow-right"></i></a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link">Suivant</span></li>
+        {% endif %}
+    </ul>
+</nav>
+<a href="/" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Profil public de {{ profile.display_name|default:profile.user.username }}{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-person-square me-2"></i>Profil public</h1>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-md-row align-items-center mb-4 border-bottom pb-3">
+                {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="Photo de profil" class="rounded-circle me-3 border border-3 border-primary" style="width:100px;height:100px;object-fit:cover;">
+                {% else %}
+                    <span class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center me-3 border border-3 border-secondary" style="width:100px;height:100px;font-size:2.5rem;">{{ profile.user.username|first|upper }}</span>
+                {% endif %}
+                <div>
+                    <h3 class="mb-1">{{ profile.display_name|default:profile.user.username }}</h3>
+                    <span class="badge bg-secondary">@{{ profile.user.username }}</span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h6 class="text-primary"><i class="bi bi-person-lines-fill"></i> Bio</h6>
+                <span>{{ profile.bio|default:'-' }}</span>
+            </div>
+            <div class="mb-4">
+                <h6 class="text-primary"><i class="bi bi-share"></i> Réseaux et liens</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    {% if profile.twitter %}
+                        <a href="{{ profile.twitter }}" target="_blank" class="badge bg-info text-dark"><i class="bi bi-twitter"></i> Twitter</a>
+                    {% endif %}
+                    {% if profile.linkedin %}
+                        <a href="{{ profile.linkedin }}" target="_blank" class="badge bg-primary"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    {% endif %}
+                    {% if profile.github %}
+                        <a href="{{ profile.github }}" target="_blank" class="badge bg-dark"><i class="bi bi-github"></i> GitHub</a>
+                    {% endif %}
+                    {% if profile.website %}
+                        <a href="{{ profile.website }}" target="_blank" class="badge bg-success"><i class="bi bi-globe"></i> Site web</a>
+                    {% endif %}
+                    {% if profile.facebook %}
+                        <a href="{{ profile.facebook }}" target="_blank" class="badge bg-primary"><i class="bi bi-facebook"></i> Facebook</a>
+                    {% endif %}
+                    {% if profile.instagram %}
+                        <a href="{{ profile.instagram }}" target="_blank" class="badge bg-danger"><i class="bi bi-instagram"></i> Instagram</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% if profile.custom_fields.all %}
+                <div class="mb-4">
+                    <h6 class="text-primary"><i class="bi bi-card-list"></i> Champs personnalisés</h6>
+                    <ul class="list-group mb-3">
+                        {% for field in profile.custom_fields.all %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><strong>{{ field.key }}</strong> :</span> <span>{{ field.value }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

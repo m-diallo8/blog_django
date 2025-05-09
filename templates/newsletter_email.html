@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvel article sur Mon Blog</title>
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <header style="background-color: #f4f4f4; padding: 10px; text-align: center;">
+        <h1 style="color: #333;">Mon Blog</h1>
+    </header>
+    
+    <main>
+        <p>Bonjour {{ subscriber_name }},</p>
+        
+        <h2 style="color: #2c3e50;">Nouvel article : {{ article_title }}</h2>
+        
+        <p style="line-height: 1.6;">{{ article_summary }}</p>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="{{ article_url }}" style="
+                display: inline-block;
+                background-color: #3498db;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+            ">Lire l'article complet</a>
+        </div>
+    </main>
+    
+    <footer style="background-color: #f4f4f4; padding: 10px; text-align: center; font-size: 0.8em;">
+        <p>
+            <a href="{{ unsubscribe_url }}">Se désabonner</a> | 
+            <a href="https://monblog.com">Mon Blog</a>
+        </p>
+    </footer>
+</body>
+</html>

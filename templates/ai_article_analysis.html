@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}Analyse IA : {{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h3>
+                        <i class="bi bi-robot"></i> Analyse IA de l'Article
+                    </h3>
+                    <div class="language-complexity">
+                        <span class="badge bg-info">
+                            Langue : {{ language|upper }}
+                        </span>
+                        <span class="badge bg-warning">
+                            Complexité : {{ complexity_score|floatformat:2 }}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <form method="post" action="{% url 'apply_ai_suggestions' article.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h4>
+                                            <i class="bi bi-file-text"></i> Résumé Généré
+                                            <input type="checkbox" name="apply_summary" class="float-end">
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ ai_summary }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h4>
+                                            <i class="bi bi-tags"></i> Tags Suggérés
+                                            <input type="checkbox" name="apply_tags" class="float-end">
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tags-container">
+                                            {% for tag in suggested_tags %}
+                                            <span class="badge bg-secondary me-1">{{ tag }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h4>
+                                    <i class="bi bi-spell-check"></i> Corrections Grammaticales
+                                    <input type="checkbox" name="apply_corrections" class="float-end">
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Original</th>
+                                            <th>Correction</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for correction in grammar_corrections %}
+                                        <tr>
+                                            <td>{{ correction.original }}</td>
+                                            <td>{{ correction.correction }}</td>
+                                        </tr>
+                                        {% empty %}
+                                        <tr>
+                                            <td colspan="2" class="text-center text-muted">
+                                                Aucune correction suggérée
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Appliquer les Suggestions
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.tags-container .badge {
+    margin-bottom: 5px;
+}
+
+.language-complexity .badge {
+    margin-left: 5px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestion des cases à cocher
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const cardBody = this.closest('.card-header').nextElementSibling;
+            if (this.checked) {
+                cardBody.classList.add('bg-light');
+            } else {
+                cardBody.classList.remove('bg-light');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

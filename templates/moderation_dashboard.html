@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Tableau de Modération</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'moderation' %}?filter=all" class="list-group-item list-group-item-action {% if filter_type == 'all' %}active{% endif %}">
+                        Tous les commentaires <span class="badge bg-secondary float-end">{{ all_comments_count }}</span>
+                    </a>
+                    <a href="{% url 'moderation' %}?filter=reported" class="list-group-item list-group-item-action {% if filter_type == 'reported' %}active{% endif %}">
+                        Signalés <span class="badge bg-warning float-end">{{ reported_comments_count }}</span>
+                    </a>
+                    <a href="{% url 'moderation' %}?filter=spam" class="list-group-item list-group-item-action {% if filter_type == 'spam' %}active{% endif %}">
+                        Spam <span class="badge bg-danger float-end">{{ spam_comments_count }}</span>
+                    </a>
+                    <a href="{% url 'moderation' %}?filter=offensive" class="list-group-item list-group-item-action {% if filter_type == 'offensive' %}active{% endif %}">
+                        Offensifs <span class="badge bg-danger float-end">{{ offensive_comments_count }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            {% if moderation_report %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4>Statistiques de Modération</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Commentaires</h5>
+                                    <p class="card-text display-4">{{ moderation_report.total_comments }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Spam</h5>
+                                    <p class="card-text display-4 text-danger">{{ moderation_report.total_spam }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Signalés</h5>
+                                    <p class="card-text display-4 text-warning">{{ moderation_report.total_reported }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Commentaires à modérer</h4>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            Filtres
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'moderation' %}?filter=all">Tous</a></li>
+                            <li><a class="dropdown-item" href="{% url 'moderation' %}?filter=reported">Signalés</a></li>
+                            <li><a class="dropdown-item" href="{% url 'moderation' %}?filter=spam">Spam</a></li>
+                            <li><a class="dropdown-item" href="{% url 'moderation' %}?filter=offensive">Offensifs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    {% if comments %}
+                        <div class="list-group">
+                            {% for comment in comments %}
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ comment.name }}</h5>
+                                    <small class="text-muted">{{ comment.created_at|date:"d/m/Y H:i" }}</small>
+                                </div>
+                                <p class="mb-1">{{ comment.content|truncatewords:20 }}</p>
+                                <small class="text-muted">Article : {{ comment.article.title }}</small>
+                                <div class="mt-2">
+                                    <a href="{% url 'validate_comment' comment.id %}" class="btn btn-success btn-sm">
+                                        <i class="bi bi-check-circle"></i> Valider
+                                    </a>
+                                    <a href="{% url 'reject_comment' comment.id %}" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-x-circle"></i> Rejeter
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info text-center">
+                            <i class="bi bi-info-circle"></i> Aucun commentaire à modérer
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.sidebar {
+    height: 100%;
+    position: sticky;
+    top: 0;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestion dynamique des filtres
+    const filterLinks = document.querySelectorAll('.list-group-item, .dropdown-item');
+    filterLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            localStorage.setItem('moderationFilter', this.getAttribute('href'));
+        });
+    });
+
+    // Restaurer le filtre précédent
+    const savedFilter = localStorage.getItem('moderationFilter');
+    if (savedFilter) {
+        const savedFilterLink = document.querySelector(`a[href="${savedFilter}"]`);
+        if (savedFilterLink) {
+            savedFilterLink.classList.add('active');
+        }
+    }
+});
+</script>
+{% endblock %}

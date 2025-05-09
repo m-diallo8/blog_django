@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block title %}Tableau de Bord Auteur{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4>Statistiques Globales</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span>Vues Totales</span>
+                        <strong>{{ total_views }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span>Likes Totaux</span>
+                        <strong>{{ total_likes }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Commentaires Totaux</span>
+                        <strong>{{ total_comments }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4>Vues Mensuelles</h4>
+                </div>
+                <div class="card-body">
+                    <canvas id="monthlyViewsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4>Articles les Plus Performants</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for article in top_articles %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ article.title }}</h5>
+                                    <p class="card-text">
+                                        Score d'engagement : {{ article.calculate_engagement_score }}%
+                                    </p>
+                                    <a href="{% url 'article_performance' article.id %}" class="btn btn-sm btn-outline-primary">
+                                        Détails de Performance
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-header bg-secondary text-white">
+            <h4>Tous Mes Articles</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Vues</th>
+                        <th>Likes</th>
+                        <th>Commentaires</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.total_views }}</td>
+                        <td>{{ article.total_likes }}</td>
+                        <td>{{ article.total_comments }}</td>
+                        <td>
+                            <a href="{% url 'article_performance' article.id %}" class="btn btn-sm btn-info">
+                                Détails
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('monthlyViewsChart').getContext('2d');
+    var monthlyViews = {{ monthly_views|safe }};
+    
+    var labels = monthlyViews.map(item => new Date(item.month).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' }));
+    var data = monthlyViews.map(item => item.views);
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Vues Mensuelles',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
+{% endblock %}

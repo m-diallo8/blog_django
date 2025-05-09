@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+<h1 class="mb-4">Résultats de recherche{% if query %} : <span class="text-primary">{{ query }}</span>{% endif %}</h1>
+<div class="row">
+    {% for article in articles %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-text">
+                    <a href="{% url 'articles_par_categorie' slug=article.category.slug %}" class="badge bg-primary text-decoration-none">{{ article.category.name }}</a>
+                </p>
+                <p class="card-text">{{ article.content|truncatechars:120 }}</p>
+                <a href="{% url 'detail_article' slug=article.slug %}" class="btn btn-outline-primary btn-sm">Lire la suite</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Aucun article ne correspond à votre recherche.</p>
+    {% endfor %}
+</div>
+<a href="/" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+{% endblock %}

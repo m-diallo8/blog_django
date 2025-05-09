@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Suppression du compte{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4 text-danger">Supprimer mon compte</h1>
+    <div class="alert alert-warning">
+        <strong>Attention :</strong> Cette action est irréversible. Toutes vos données seront supprimées définitivement.<br>
+        Êtes-vous sûr de vouloir continuer ?
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Oui, supprimer mon compte</button>
+        <a href="{% url 'profil' %}" class="btn btn-secondary ms-2">Annuler</a>
+    </form>
+</div>
+{% endblock %}

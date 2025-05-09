@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}{{ article.title }} - Mon Blog{% endblock %}
+{% block meta_description %}{{ article.content|truncatewords:30|striptags }}{% endblock %}
+{% block meta_keywords %}
+    {{ article.category.name }},
+    {% for tag in article.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+{% endblock %}
+{% block meta_author %}{{ article.author.profile.display_name|default:article.author.username }}{% endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.content|truncatewords:30|striptags }}{% endblock %}
+{% block og_image %}{% if article.image %}{{ article.image.url }}{% else %}/static/img/og-default.png{% endif %}{% endblock %}
+{% block twitter_title %}{{ article.title }}{% endblock %}
+{% block twitter_description %}{{ article.content|truncatewords:30|striptags }}{% endblock %}
+{% block twitter_image %}{% if article.image %}{{ article.image.url }}{% else %}/static/img/og-default.png{% endif %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-xl-8">
+        <div class="card shadow-lg mb-4">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" class="card-img-top rounded-top" alt="{{ article.title }}" style="object-fit:cover;max-height:320px;">
+            {% endif %}
+            <div class="card-body pb-2">
+                <div class="d-flex align-items-center mb-2">
+                    {% if article.author.profile.photo %}
+                        <img src="{{ article.author.profile.photo.url }}" class="rounded-circle me-2 border" style="width:38px;height:38px;object-fit:cover;">
+                    {% else %}
+                        <span class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center me-2 border" style="width:38px;height:38px;font-size:1.2rem;">{{ article.author.username|first|upper }}</span>
+                    {% endif %}
+                    <span class="fw-bold">{{ article.author.profile.display_name|default:article.author.username }}</span>
+                    <span class="text-muted ms-3 small"><i class="bi bi-calendar-event"></i> {{ article.created_at|date:"d/m/Y H:i" }}</span>
+                </div>
+                <h1 class="card-title mb-2 text-primary">{{ article.title }}</h1>
+                <div class="mb-2">
+                    <span class="badge bg-primary"><i class="bi bi-folder2"></i> {{ article.category.name }}</span>
+                    {% for tag in article.tags.all %}
+                        <a href="{% url 'articles_par_tag' slug=tag.slug %}" class="badge bg-success text-decoration-none ms-1"><i class="bi bi-tag"></i> {{ tag.name }}</a>
+                    {% empty %}
+                        <span class="text-muted">Aucun tag</span>
+                    {% endfor %}
+                </div>
+                <div class="card-text fs-5 mt-4 mb-2" style="line-height:1.7;">{{ article.content|linebreaks }}</div>
+
+                <!-- Boutons de partage social -->
+                <div class="social-share mt-4 d-flex justify-content-center gap-3">
+                    <!-- Partage Twitter -->
+                    <a href="https://twitter.com/intent/tweet?text={{ article.get_share_text|urlencode }}&url={{ request.build_absolute_uri }}{{ article.get_absolute_url|urlencode }}&hashtags={{ article.get_share_hashtags|join:","|urlencode }}" target="_blank" class="btn btn-outline-info">
+                        <i class="bi bi-twitter"></i> Twitter
+                    </a>
+                    
+                    <!-- Partage Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}{{ article.get_absolute_url|urlencode }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+                    
+                    <!-- Partage LinkedIn -->
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}{{ article.get_absolute_url|urlencode }}&title={{ article.title|urlencode }}&summary={{ article.content|truncatewords:30|urlencode }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commentaires -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h3 class="mb-4"><i class="bi bi-chat-dots"></i> Commentaires</h3>
+
+                {% load form_tags %}
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/2.0.0/trix.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/2.0.0/trix.umd.min.js"></script>
+
+                <div class="mb-4">
+                    {% for comment in comments %}
+                        {% include 'comment_thread.html' with comment=comment %}
+                    {% empty %}
+                        <p class="text-muted">Aucun commentaire pour cet article.</p>
+                    {% endfor %}
+                </div>
+
+                <h4 class="mb-3 animated fadeInDown"><i class="bi bi-pencil-square"></i> Laisser un commentaire</h4>
+
+                {% if user.is_authenticated %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.content.label_tag }}
+                        {{ form.content }}
+                        {{ form.content.errors }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                        {{ form.image.errors }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Envoyer un commentaire</button>
+                </form>
+    {% else %}
+        <p>Vous devez être <a href="{% url 'login' %}?next={{ request.path }}"><i class="bi bi-box-arrow-in-right"></i> connecté</a> pour commenter.</p>
+    {% endif %}
+
+            </div>
+        </div>
+
+        <!-- Articles similaires -->
+        <hr>
+        <h4>Articles similaires</h4>
+        <div class="row mb-4">
+            {% for art in similaires %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        {% if art.image %}
+                            <img src="{{ art.image.url }}" class="card-img-top" alt="{{ art.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h6 class="card-title">{{ art.title }}</h6>
+                            <a href="{% url 'detail_article' slug=art.slug %}" class="btn btn-outline-primary btn-sm">Voir</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Aucun article similaire.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Articles recommandés -->
+        <div class="container mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-xl-8">
+                    <h3 class="mb-4">Articles recommandés</h3>
+                    {% if recommended_articles %}
+                    <div class="row">
+                        {% for recommended_article in recommended_articles %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                {% if recommended_article.image %}
+                                <img src="{{ recommended_article.image.url }}" class="card-img-top" alt="{{ recommended_article.title }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ recommended_article.title }}</h5>
+                                    <p class="card-text">{{ recommended_article.content|truncatewords:20|striptags }}</p>
+                                    <a href="{% url 'detail_article' slug=recommended_article.slug %}" class="btn btn-outline-primary">Lire l'article</a>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Catégorie : {{ recommended_article.category.name }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="text-muted">Pas d'articles recommandés pour le moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <a href="/" class="btn btn-secondary">Retour à l'accueil</a>
+    </div>
+</div>
+
+<!-- Script pour la prévisualisation Trix -->
+<script>
+    document.addEventListener('trix-change', function(event) {
+        const editor = event.target;
+        const preview = document.getElementById('comment-preview');
+        preview.innerHTML = editor.innerHTML || 'Votre commentaire apparaîtra ici...';
+    });
+</script>
+{% endblock %}

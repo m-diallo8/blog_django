@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Préférences de Lecture{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Personnaliser votre Mode Lecture</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Taille de Police</label>
+                            {{ form.font_size }}
+                            <div class="form-text">Choisissez la taille de police qui vous convient le mieux.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Mode de Contraste</label>
+                            {{ form.contrast_mode }}
+                            <div class="form-text">Adaptez le contraste pour un confort de lecture optimal.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Hauteur de Ligne</label>
+                            {{ form.line_height }}
+                            <div class="form-text">Ajustez l'espacement entre les lignes (1.0 - 2.5).</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Largeur de Lecture</label>
+                            {{ form.reading_width }}
+                            <div class="form-text">Définissez la largeur de la zone de lecture (50% - 100%).</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Enregistrer les Préférences
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                {% if current_preferences %}
+                <div class="card-footer">
+                    <h5>Aperçu Actuel</h5>
+                    <div class="preview-container {{ current_preferences.get_reading_class }}">
+                        <p>Voici un exemple de texte avec vos paramètres actuels.</p>
+                        <p>Observez comment la taille de police, le contraste et l'espacement changent.</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+.preview-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+/* Styles dynamiques pour les préférences */
+.font-size-small { font-size: 0.8rem; }
+.font-size-medium { font-size: 1rem; }
+.font-size-large { font-size: 1.2rem; }
+.font-size-extra-large { font-size: 1.4rem; }
+
+.contrast-default { background-color: white; color: black; }
+.contrast-high-contrast { 
+    background-color: white; 
+    color: black; 
+    font-weight: bold; 
+}
+.contrast-dark-mode { 
+    background-color: #121212; 
+    color: white; 
+}
+.contrast-sepia { 
+    background-color: #f4ecd8; 
+    color: #5b4636; 
+}
+
+.line-height-150 { line-height: 1.5; }
+.line-height-160 { line-height: 1.6; }
+.line-height-170 { line-height: 1.7; }
+.line-height-180 { line-height: 1.8; }
+</style>
+{% endblock %}
+{% endblock %}

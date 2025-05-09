@@ -1,0 +1,12 @@
+Bonjour {{ subscriber_name }},
+
+Un nouvel article est disponible sur Mon Blog : {{ article_title }}
+
+Résumé : {{ article_summary }}
+
+Lire l'article complet : {{ article_url }}
+
+---
+Pour vous désabonner, cliquez sur le lien : {{ unsubscribe_url }}
+
+Mon Blog - Toute l'actualité en un clic !

@@ -1,0 +1,51 @@
+{% load custom_filters %}
+<div class="mb-3 p-3 border rounded bg-light ms-{{ level|default:0 }}">
+    <strong>{{ comment.name }}</strong> <span class="text-muted small">le {{ comment.created_at|date:"d/m/Y H:i" }}</span><br>
+    {{ comment.content|linebreaks }}
+    <div class="mt-2">
+        {% if user.is_authenticated %}
+            <button class="btn btn-link btn-sm p-0" type="button" onclick="document.getElementById('reply-form-{{ comment.id }}').classList.toggle('d-none');">Répondre</button>
+            <form id="reply-form-{{ comment.id }}" method="post" class="mb-2 d-none">
+                {% csrf_token %}
+                <input type="hidden" name="parent" value="{{ comment.id }}">
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        {{ form.name|add_class:"form-control" }}
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        {{ form.email|add_class:"form-control" }}
+                    </div>
+                </div>
+                <div class="mb-2">
+                    {{ form.content.label_tag }}
+                    <input id="id_trix_content_{{ comment.id }}" type="hidden" name="content" value="{{ form.content.value|default:'' }}">
+                    <trix-editor input="id_trix_content_{{ comment.id }}" class="trix-editor-sm"></trix-editor>
+                    {% for error in form.content.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                {% if form.captcha %}
+                <div class="mb-2 form-check">
+                    {{ form.captcha }} {{ form.captcha.label_tag }}
+                    {% for error in form.captcha.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-reply"></i> Envoyer</button>
+            </form>
+        {% endif %}
+        <form method="post" action="{% url 'report_comment' comment.id %}" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link btn-sm text-danger p-0 ms-2" {% if comment.is_reported %}disabled{% endif %} title="Signaler ce commentaire">
+                {% if comment.is_reported %}<i class="bi bi-flag-fill"></i> Signalé{% else %}<i class="bi bi-flag"></i> Signaler{% endif %}
+            </button>
+        </form>
+    </div>
+    {% if comment.replies.all %}
+        <div class="ms-4 mt-2">
+            {% for reply in comment.replies.all %}
+                {% include 'comment_thread.html' with comment=reply level=level|add:4 %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Mode Lecture : {{ article.title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid reading-mode {{ reading_class }}" style="max-width: {{ reading_width }}%;">
+    <div class="row">
+        <div class="col-12">
+            <article class="reading-article">
+                <header>
+                    <h1 class="article-title">{{ article.title }}</h1>
+                    <div class="article-meta d-flex justify-content-between align-items-center">
+                        <div class="author-info">
+                            <img src="{{ article.author.profile.avatar.url }}" 
+                                 alt="{{ article.author.username }}" 
+                                 class="rounded-circle author-avatar" 
+                                 width="40" height="40">
+                            <span class="ms-2">{{ article.author.username }}</span>
+                        </div>
+                        <div class="reading-tools">
+                            <button id="toggleFullscreen" class="btn btn-outline-secondary btn-sm me-2">
+                                <i class="bi bi-arrows-fullscreen"></i>
+                            </button>
+                            <a href="{% url 'reading_preferences' %}" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-gear"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </header>
+                
+                <div class="article-content">
+                    {% if article.image %}
+                    <figure class="article-cover-image">
+                        <img src="{{ article.image.url }}" 
+                             alt="{{ article.title }}" 
+                             class="img-fluid rounded mb-4">
+                    </figure>
+                    {% endif %}
+                    
+                    {{ article.content|safe }}
+                </div>
+                
+                <footer class="mt-4">
+                    <div class="article-tags">
+                        {% for tag in article.tags.all %}
+                            <span class="badge bg-secondary me-1">{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="reading-progress">
+                        <div class="progress" style="height: 5px;">
+                            <div id="readingProgressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestion du mode plein écran
+    const toggleFullscreen = document.getElementById('toggleFullscreen');
+    const readingMode = document.querySelector('.reading-mode');
+    
+    toggleFullscreen.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            if (readingMode.requestFullscreen) {
+                readingMode.requestFullscreen();
+            } else if (readingMode.mozRequestFullScreen) { // Firefox
+                readingMode.mozRequestFullScreen();
+            } else if (readingMode.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                readingMode.webkitRequestFullscreen();
+            } else if (readingMode.msRequestFullscreen) { // Internet Explorer/Edge
+                readingMode.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { // Internet Explorer/Edge
+                document.msExitFullscreen();
+            }
+        }
+    });
+    
+    // Barre de progression de lecture
+    const readingProgressBar = document.getElementById('readingProgressBar');
+    const articleContent = document.querySelector('.article-content');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollProgress = (scrollTop / scrollHeight) * 100;
+        
+        readingProgressBar.style.width = scrollProgress + '%';
+    });
+});
+</script>
+
+<style>
+.reading-mode {
+    margin: 0 auto;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.reading-article {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-content {
+    text-align: justify;
+}
+
+.reading-tools {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    object-fit: cover;
+}
+
+.reading-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+</style>
+{% endblock %}

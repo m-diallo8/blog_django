@@ -1,0 +1,963 @@
+2025-05-08 14:08:52,758 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\config\urls.py changed, reloading.
+2025-05-08 14:19:27,612 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\admin.py changed, reloading.
+2025-05-08 14:19:28,854 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:20:15,790 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\admin.py changed, reloading.
+2025-05-08 14:20:16,590 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:22:12,389 - django.request - WARNING - Not Found: /accounts/profile/
+2025-05-08 14:23:11,364 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:23:12,400 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:23:48,186 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 14:23:48,915 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:23:54,186 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\admin.py changed, reloading.
+2025-05-08 14:23:54,892 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:24:36,232 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:24:54,672 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:24:55,146 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:25:09,937 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:25:10,746 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:25:47,826 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:26:23,494 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:26:24,320 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:27:01,707 - django.request - ERROR - Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: blog_profile.avatar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 422, in user_profile
+    profile, created = Profile.objects.get_or_create(user=request.user)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 946, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1935, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: blog_profile.avatar
+2025-05-08 14:28:17,974 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:28:58,133 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:28:58,139 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:30:00,222 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:30:02,372 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:30:12,125 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:30:12,909 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:32:46,677 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:32:47,559 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:33:03,847 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:33:03,849 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:33:13,509 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:33:13,511 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:33:22,673 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:33:22,675 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:35:22,879 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:35:23,659 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:35:31,085 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:35:32,171 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:36:03,020 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:36:03,026 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:37:00,482 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:37:00,486 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:37:35,163 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:37:36,823 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:38:00,346 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:38:01,876 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:38:11,610 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:38:12,625 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:38:49,804 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:38:49,811 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:41:23,111 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:41:23,114 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:44:28,291 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:44:29,390 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:46:20,087 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:46:20,093 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:46:58,051 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:46:59,324 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:47:43,082 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:47:43,083 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:48:13,818 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:48:13,820 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:48:25,960 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-08 14:48:25,963 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-08 14:51:46,324 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:51:47,137 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:52:09,677 - django.request - WARNING - Method Not Allowed (GET): /logout/
+2025-05-08 14:52:18,478 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 14:52:19,311 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:56:58,208 - django.request - ERROR - Internal Server Error: /profil/modifier/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 190, in edit_profil
+    class ProfileForm(forms.ModelForm):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\forms\models.py", line 334, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (display_name) specified for Profile
+2025-05-08 14:57:30,530 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:57:31,372 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 14:57:48,298 - django.request - ERROR - Internal Server Error: /profil/modifier/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 195, in edit_profil
+    ProfileFieldFormSet = forms.modelformset_factory(ProfileField, fields=("key", "value"), extra=0, can_delete=True)
+                                                     ^^^^^^^^^^^^
+NameError: name 'ProfileField' is not defined. Did you mean: 'ProfileForm'?
+2025-05-08 14:58:19,993 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 14:58:20,668 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:07:15,545 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:07:17,675 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:07:41,707 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:07:42,466 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:13:15,955 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:13:18,248 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:13:27,714 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:13:28,529 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:13:48,019 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:13:48,910 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:13:58,016 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 15:13:58,719 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:16:09,981 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:16:11,034 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:17:44,664 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:18:27,612 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:18:28,689 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:18:43,595 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:18:44,363 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:18:52,086 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:18:53,357 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:19:08,234 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:19:09,168 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:19:31,044 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:20:55,901 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 15:20:56,792 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 15:21:31,926 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 15:21:32,890 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 16:55:33,147 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 16:56:52,739 - django.request - WARNING - Not Found: /favicon.ico
+2025-05-08 16:56:56,814 - django.request - ERROR - Internal Server Error: /article/actualites-du-monde/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-08 16:58:32,353 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 16:58:37,009 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:00:31,485 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:00:36,086 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:01:08,772 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:01:13,624 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:01:34,954 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:01:36,560 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:01:46,714 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:01:48,935 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:02:27,555 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:02:30,832 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:02:54,442 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 17:02:58,824 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:03:20,711 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 17:03:24,180 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:03:42,537 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:03:45,964 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:05:00,137 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:05:03,398 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:05:15,973 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:05:21,252 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:07:25,355 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:07:30,834 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:08:20,233 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:08:25,552 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:12:50,378 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:13:06,345 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:13:45,867 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:13:52,789 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:16:26,690 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:16:35,525 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:18:31,170 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-08 17:18:42,674 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:20:01,929 - django.request - ERROR - Internal Server Error: /article/mercedes-gt-67s/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-08 17:23:18,127 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:25:18,470 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-08 17:25:24,595 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:29:32,961 - django.request - ERROR - Internal Server Error: /article/mercedes-gt-67s/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-08 17:30:11,057 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 17:37:07,935 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-08 17:39:20,470 - django.request - ERROR - Internal Server Error: /article/mercedes-gt-67s/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-08 17:39:44,675 - django.request - ERROR - Internal Server Error: /article/ford-explorer-2020/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-08 17:43:26,136 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-08 17:43:40,497 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 08:48:14,796 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 08:48:54,865 - django.request - WARNING - Not Found: /favicon.ico
+2025-05-09 08:49:04,556 - django.request - ERROR - Internal Server Error: /article/ford-explorer-2020/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-09 08:50:16,583 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 08:50:39,504 - django.request - ERROR - Internal Server Error: /article/mercedes-gt-67s/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: blog_articleview
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: blog_articleview
+2025-05-09 08:51:40,180 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py changed, reloading.
+2025-05-09 08:51:47,297 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 09:05:13,490 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: ArticleView() got unexpected keyword arguments: 'user'
+2025-05-09 09:06:25,947 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\migrations\0001_initial.py changed, reloading.
+2025-05-09 09:06:31,286 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 09:07:11,639 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: ArticleView() got unexpected keyword arguments: 'user'
+2025-05-09 09:10:33,876 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-09 09:10:39,757 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 09:12:37,196 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-09 09:12:42,025 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 09:13:04,483 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\urls.py changed, reloading.
+2025-05-09 09:13:07,886 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 09:27:38,078 - django.request - WARNING - Method Not Allowed (GET): /accounts/logout/
+2025-05-09 09:27:38,089 - django.request - WARNING - Method Not Allowed: /accounts/logout/
+2025-05-09 09:28:07,522 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: ArticleView() got unexpected keyword arguments: 'user'
+2025-05-09 10:03:27,987 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-09 10:03:39,182 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:04:54,601 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:05:48,521 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\models.py changed, reloading.
+2025-05-09 10:05:53,876 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:06:26,537 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = middleware_method(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py", line 14, in process_view
+    ArticleView.objects.create(
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: ArticleView() got unexpected keyword arguments: 'user'
+2025-05-09 10:08:34,112 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\middleware.py changed, reloading.
+2025-05-09 10:08:41,494 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:09:35,426 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\migrations\0001_initial.py changed, reloading.
+2025-05-09 10:09:40,653 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:10:32,096 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 741, in detail_article
+    comments = article.comments.filter(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1495, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1307, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'is_approved' into field. Choices are: article, article_id, content, created_at, dislikes, email, id, image, is_offensive, is_reported, is_spam, likes, moderated_at, moderation_reason, name, parent, parent_id, replies, report_count, report_reason, reported_by, user, user_id, validated
+2025-05-09 10:10:42,825 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 741, in detail_article
+    comments = article.comments.filter(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1495, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1307, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'is_approved' into field. Choices are: article, article_id, content, created_at, dislikes, email, id, image, is_offensive, is_reported, is_spam, likes, moderated_at, moderation_reason, name, parent, parent_id, replies, report_count, report_reason, reported_by, user, user_id, validated
+2025-05-09 10:12:35,120 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-09 10:12:42,102 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:13:15,487 - django.utils.autoreload - INFO - Watching for file changes with StatReloader
+2025-05-09 10:14:01,359 - django.request - ERROR - Internal Server Error: /article/entre-linde-et-le-pakistan-des-tirs-et-des-ripostes-qui-les-rapprochent-dune-guerre/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 828, in detail_article
+    return render(request, 'detail_article.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 481, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\template\base.py", line 670, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse some characters: request.build_absolute_uri|:article.get_absolute_url||urlencode
+2025-05-09 10:18:04,034 - django.request - ERROR - Internal Server Error: /article/bamako-le-meeting-populaire-des-partis-politiques-reporte-en-raison-de-risques-daffrontements/
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 782, in detail_article
+    if is_flood_limited(request.user):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py", line 752, in is_flood_limited
+    last_comment_time = cache.get(cache_key)
+                        ^^^^^
+NameError: name 'cache' is not defined
+2025-05-09 10:28:52,629 - django.utils.autoreload - INFO - C:\Users\Lenovo\CascadeProjects\blog_django\blog\views.py changed, reloading.
+2025-05-09 10:29:06,196 - django.utils.autoreload - INFO - Watching for file changes with StatReloader

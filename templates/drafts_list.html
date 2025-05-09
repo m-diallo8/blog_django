@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Mes Brouillons{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3>Mes Brouillons</h3>
+                    <a href="{% url 'create_draft' %}" class="btn btn-primary">
+                        <i class="bi bi-plus"></i> Nouveau Brouillon
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% if drafts %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Titre</th>
+                                        <th>Créé le</th>
+                                        <th>Catégorie</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for draft in drafts %}
+                                    <tr>
+                                        <td>{{ draft.title }}</td>
+                                        <td>{{ draft.created_at|date:"d/m/Y" }}</td>
+                                        <td>{{ draft.category.name }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{% url 'edit_draft' draft.id %}" class="btn btn-sm btn-outline-primary">
+                                                    <i class="bi bi-pencil"></i> Éditer
+                                                </a>
+                                                <a href="{% url 'publish_draft' draft.id %}" class="btn btn-sm btn-outline-success">
+                                                    <i class="bi bi-send"></i> Publier
+                                                </a>
+                                                <a href="{% url 'delete_draft' draft.id %}" class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i> Supprimer
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        {% if drafts.has_other_pages %}
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                {% if drafts.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ drafts.previous_page_number }}">Précédent</a>
+                                    </li>
+                                {% endif %}
+                                
+                                {% for page_num in drafts.paginator.page_range %}
+                                    <li class="page-item {% if page_num == drafts.number %}active{% endif %}">
+                                        <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                                    </li>
+                                {% endfor %}
+                                
+                                {% if drafts.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ drafts.next_page_number }}">Suivant</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% endif %}
+                    {% else %}
+                        <div class="alert alert-info text-center">
+                            <p>Vous n'avez pas encore de brouillons.</p>
+                            <a href="{% url 'create_draft' %}" class="btn btn-primary mt-2">
+                                Créer un brouillon
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Total de brouillons : {{ total_drafts }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

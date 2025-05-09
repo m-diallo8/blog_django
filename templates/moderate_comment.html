@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Modération de commentaire</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Auteur :</strong> {{ comment.name }}
+                        <br>
+                        <strong>Email :</strong> {{ comment.email }}
+                        <br>
+                        <strong>Date :</strong> {{ comment.created_at }}
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p>{{ comment.content }}</p>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-header">Signalements</div>
+                        <div class="card-body">
+                            <p><strong>Nombre de signalements :</strong> {{ comment.report_count }}</p>
+                            {% if comment.report_reason %}
+                            <p><strong>Raisons de signalement :</strong> {{ comment.report_reason }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="reason" class="form-label">Raison de la modération</label>
+                            <textarea class="form-control" id="reason" name="reason" rows="3" placeholder="Expliquez votre décision de modération"></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" name="action" value="approve" class="btn btn-success">Approuver</button>
+                            <button type="submit" name="action" value="reject" class="btn btn-danger">Rejeter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

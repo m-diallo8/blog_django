@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Historique des Points{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h3>
+                        <i class="bi bi-graph-up"></i> Historique des Points
+                    </h3>
+                    <div class="total-points">
+                        <span class="badge bg-success fs-5">
+                            Total : {{ total_points }} points
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Points</th>
+                                    <th>Raison</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for entry in points_history %}
+                                <tr class="{% if entry.points > 0 %}table-success{% else %}table-danger{% endif %}">
+                                    <td>{{ entry.created_at|date:"d/m/Y H:i" }}</td>
+                                    <td>
+                                        <span class="badge {% if entry.points > 0 %}bg-success{% else %}bg-danger{% endif %}">
+                                            {{ entry.points }}
+                                        </span>
+                                    </td>
+                                    <td>{{ entry.reason }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted">
+                                        Aucune activité de points pour le moment
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {% include 'components/pagination.html' with page_obj=points_history %}
+                </div>
+                
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5>Points par Article</h5>
+                                    <p class="display-6">+50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-warning text-dark">
+                                <div class="card-body text-center">
+                                    <h5>Points par Commentaire</h5>
+                                    <p class="display-6">+10</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success text-white">
+                                <div class="card-body text-center">
+                                    <h5>Points par Like</h5>
+                                    <p class="display-6">+5</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.card-footer .card {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card-footer .card:hover {
+    transform: scale(1.05);
+}
+</style>
+{% endblock %}

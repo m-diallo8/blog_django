@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Publier le Brouillon{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Publier le Brouillon</h3>
+                </div>
+                <div class="card-body">
+                    <h4>{{ draft.title }}</h4>
+                    <p>Voulez-vous vraiment publier ce brouillon ?</p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Détails du brouillon :</strong>
+                        <ul>
+                            <li>Créé le : {{ draft.created_at|date:"d/m/Y" }}</li>
+                            <li>Catégorie : {{ draft.category.name }}</li>
+                            <li>Nombre de tags : {{ draft.tags.count }}</li>
+                        </ul>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'drafts_list' %}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Annuler
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-send"></i> Confirmer la publication
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
